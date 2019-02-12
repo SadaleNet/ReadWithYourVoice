@@ -1,0 +1,52 @@
+{
+	"global": {
+		"TODO": ["TODO", "TODO"],
+		"title": ["Read with Your Voice", "ilo toki pi kalama sina"]
+	},
+	"home": {
+		"header": ["Toki Pona Text to Speech with Your Voice!", "TODO"],
+		"description": ["Record 25 Toki Pona sentences and you can synthesize arbitrary Toki Pona text using your voice!", "TODO"],
+		"remarks": ["For synthesizing non-standard words, additional syllables had to be recorded.", "TODO"],
+		"demovoice": ["Demo Voice!", "TODO"],
+		"startrecording": ["Start Recording!", "TODO"],
+		"developedby": ["Developed by", "TODO"],
+		"author": ["Sadale", "TODO"],
+		"sourcecode": ["Source code available on", "TODO"],
+		"github": ["Github", "TODO"]
+	},
+	"newvoice": {
+		"title": ["Create New Voice", "kalama sin"],
+		"name": ["Name of this voice", "TODO"],
+		"stressedsyllable": ["Stressed Syllable", "TODO"],
+		"unstressedsyllable": ["Unstressed Syllable", "TODO"],
+		"duration": ["Syllable Duration (ms)", "TODO"],
+		"test": ["Test pitch and speed (Recommended)", "TODO"],
+		"submit": ["Start Recording", "TODO"],
+		"tos": ["By pressing the button above, you agree with the Terms of Service and Privacy Policy.", "TODO"],
+		"toscontent": ["TODO\nContent of TOS goes here", "TODO"],
+		"nochange": ["You cannot change this later!", "TODO"]
+	},
+	"record": {
+		"title": ["Modify Voice", "ante e kalama"],
+		"currentsentence": ["Current Sentence:", "TODO"],
+		"search": ["(Search Setence by Word)", "TODO"],
+		"play": ["Play", "TODO"],
+		"next": ["Next", "TODO"],
+		"switch": ["Switch to Text-to-Speech Page", "TODO"]
+	},
+	"playback": {
+		"changename": ["Change", "TODO"],
+		"stressed": ["Stressed", "TODO"],
+		"unstressed": ["Unstressed", "TODO"],
+		"duration": ["Syllable Duration", "TODO"],
+		"play": ["Play", "TODO"],
+		"text": ["Text to be Synthesized:", "TODO"],
+		"switch": ["Switch to Recording Page", "TODO"]
+	},
+	"copylinks": {
+		"modify": ["Use this link to modify this voice in the future. Do not share it to anyone else or they'd also be able to modify this voice.", "TODO"],
+		"share": ["Use this link to share this voice. One cannot modify the voice with this link.", "TODO"],
+		"copy": ["Copy", "o kama jo!"],
+		"copied": ["Copied", "pona!"]
+	}
+}
