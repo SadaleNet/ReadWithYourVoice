@@ -7,9 +7,7 @@ import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 import Button from 'react-bootstrap/Button';
-import Alert from 'react-bootstrap/Alert';
-import Form from 'react-bootstrap/Form';
-
+import Form from 'react-bootstrap/Form'
 
 class RecordingModification extends React.Component{
 	constructor(props) {
@@ -38,7 +36,7 @@ class RecordingModification extends React.Component{
 								<option>5</option>
 							</Form.Control>
 						</Form.Group>
-				
+
 						<Form.Control as="select" className="w-100">
 							<Translate>{({ translate }) => (
 								<option>{translate("record.search")}</option>

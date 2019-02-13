@@ -9,8 +9,6 @@ import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 import CopyLinks from './CopyLinks'
 
@@ -21,14 +19,14 @@ class RecordingPlayback extends React.Component{
 				<Translate>
 					{({ translate }) => (
 						<Helmet>
-							<title>{ "TODO: name of the voice" +' | '+translate("global.title")}</title>
+							<title>{ "TODO: name of the voice" + " | " + translate("global.title") }</title>
 						</Helmet>)
 					}
 				</Translate>
 				<div class="d-flex flex-column mx-auto flex-grow-1 w-100 justify-content-center align-items-center">
 					{ this.props.location.pathname.endsWith('kute') ?
 					(
-						<InputGroup className="mb-3 w-100">
+						<InputGroup className="w-100">
 							<Form.Control
 								aria-label="Name of the voice"
 								value="TODO: name of the voice"
@@ -47,7 +45,15 @@ class RecordingPlayback extends React.Component{
 					</small>
 				</div>
 				<div class="d-flex flex-column mx-auto flex-grow-1 w-100 justify-content-center align-items-center">
-					<b><Translate id="playback.text"/></b>
+					<Form.Control as="select" className="w-100">
+						<Translate>{({ translate }) => (
+							<option>{translate("playback.text")}</option>
+						)}</Translate>
+						<option>nimi ali pi toki pona</option>
+						<option>nimi ali pi toki jan</option>
+						<option>mi ken ala moli e pipi</option>
+						<option>TODO</option>
+					</Form.Control>
 					<Form.Control as="textarea" rows="8" />
 					<Button variant="success" className="w-100">
 						▶ <Translate id="playback.play"/>
