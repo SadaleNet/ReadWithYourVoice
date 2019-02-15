@@ -86,7 +86,7 @@ function playNextWord(message, audioPlayEndCallback, recordMode=false){
 	}
 	let currentWord;
 
-	if(wordList.indexOf(message[0]) != -1){ //Official word
+	if(wordList.indexOf(message[0]) !== -1){ //Official word
 		currentWord = message[0];
 		message = message.slice(1)
 	}else{ //Unofficial word! We're taking the first syllable as a "word".
@@ -149,6 +149,7 @@ function playSentence(message, audioPlayEndCallback, recordMode=false){
 		playNextWord(wordsQueue, audioPlayEndCallback, recordMode);
 	}else{
 		previousWordStartTime = (new Date()).getTime();
+		previousWordStartTime += syllableDuration; //Delay all sounds by a syllableDuration.
 		for(let i=0; i<8; i++)
 			setToHappen(() => playBeat(), previousWordStartTime+syllableDuration*i);
 		setToHappen(() => playNextWord(wordsQueue, audioPlayEndCallback, recordMode), previousWordStartTime+syllableDuration*8);

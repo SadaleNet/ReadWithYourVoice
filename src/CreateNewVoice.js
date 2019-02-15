@@ -2,9 +2,14 @@ import React from 'react';
 import $ from 'jquery';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import { withLocalize } from "react-localize-redux";
 import { Translate } from "react-localize-redux";
 import { Helmet } from "react-helmet";
+
+import ReCAPTCHA from "react-google-recaptcha";
+
+import config from './private/config.json';
 
 let loadAudio = require('./audioSynth.js').loadAudio;
 let playSentence = require('./audioSynth.js').playSentence;
@@ -49,7 +54,10 @@ class CreateNewVoice extends React.Component{
 			stressedFrequency:nameToFrequency("A3"),
 			unstressedFrequency:nameToFrequency("A2"),
 			durationValue: 200,
-			submittingForm: false
+			captchaToken: "dummyTokenToBypassCaptcha", //TODO: set this to "" to re-enable captcha
+			errorMessage: "", //If it isn't empty, an error dialog will be shown.
+			submittingForm: false,
+			playingTestAudio: false
 		};
 	}
 	playAudioTest = () => {
@@ -60,7 +68,12 @@ class CreateNewVoice extends React.Component{
 			syllableDuration: this.state.durationValue,
 			fileSeparationDuration: this.state.durationValue,
 		});
-		playSentence(sampleSentence, null, true);
+		this.setState({playingTestAudio: true});
+		playSentence(sampleSentence,
+			() => {
+			this.setState({playingTestAudio: false});
+			}, 
+			true);
 	}
 	handleStressedFrequencyChange = (e) => {
 		this.setState({stressedFrequency: e.target[e.target.selectedIndex].value});
@@ -74,32 +87,65 @@ class CreateNewVoice extends React.Component{
 	handleDurationChange = (e) => {
 		this.setState({durationValue: e.target.value});
 	}
+	handleCaptchaReady = (captchaToken) => {
+		this.setState({captchaToken: captchaToken});
+	}
 	handleFormSubmit = (e) => {
 		e.preventDefault();
-		const url = "http://localhost:3001/kalama-sin"; //TODO: Variable API endpoint
+		const url = "http://localhost:3001/api/kalama-sin"; //TODO: Variable API endpoint
 		const dataToBeSent = {
 			name: this.state.name,
-			stressedFrequency: this.state.stressedFrequency,
-			unstressedFrequency: this.state.unstressedFrequency,
-			durationValue: this.state.durationValue,
+			stressedFrequency: parseFloat(this.state.stressedFrequency),
+			unstressedFrequency: parseFloat(this.state.unstressedFrequency),
+			durationValue: parseFloat(this.state.durationValue),
+			captchaToken: e.target.elements["g-recaptcha-response"].value
 		};
 		const componentThis = this;
 		this.setState({submittingForm: true});
+		const that = this;
 		$.ajax(url, {
 			data : JSON.stringify(dataToBeSent),
 			contentType : 'application/json',
-			type : 'POST'
-		}).done(function(){
-			componentThis.props.history.push('/kalama/d2b5d427-a092-4694-8d49-a731145e6fae/TESTTOKEN123/open'); //TODO!
+			type : 'POST',
+			success : (data, textStatus, jqXHR) => {
+				if("id" in data && "token" in data){
+					componentThis.props.history.push(`/kalama/${data.id}/${data.token}/open`);
+				}else{
+					that.setState({errorMessage: "Unknown Error Occured."});
+					that.setState({submittingForm: false});
+				}
+			},
+			error : (jqXHR, textStatus, errorThrown) => {
+				this.setState({errorMessage:
+					( (jqXHR.responseJSON && "errorMessage" in jqXHR.responseJSON) ?
+					jqXHR.responseJSON.errorMessage : "Unknown Error Occured.")
+				});
+				that.setState({submittingForm: false});
+			},
 		});
+	}
+	clearCloseErrorMessageDialog = () => {
+		this.setState({errorMessage: ""});
 	}
 	render() {
 		return (
 			<main class="container flex-column d-flex p-2">
+				<Modal show={this.state.errorMessage} onHide={this.clearCloseErrorMessageDialog}>
+					<Modal.Header closeButton>
+						<Modal.Title>Error</Modal.Title>
+					</Modal.Header>
+					<Modal.Body>{this.state.errorMessage}</Modal.Body>
+					<Modal.Footer>
+						<Button variant="danger" onClick={this.clearCloseErrorMessageDialog}>
+						OK
+						</Button>
+					</Modal.Footer>
+					</Modal>
 				<Translate>
 					{({ translate }) => (
 						<Helmet>
 							<title>{translate("newvoice.title")+' | '+translate("global.title")}</title>
+							<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 						</Helmet>)
 					}
 				</Translate>
@@ -136,15 +182,19 @@ class CreateNewVoice extends React.Component{
 							</Form.Text>
 						</Form.Group>
 						<div class="text-center">
-							<Button variant="success" className="text-center" onClick={this.playAudioTest}>
+							<Button variant="success" className="text-center" onClick={this.playAudioTest} disabled={this.state.playingTestAudio}>
 							▶ <Translate id="newvoice.test"/>
 							</Button>
 						</div>
 						<br/>
-						<small>
-						TODO: captcha goes here!
-						</small>
-						<Button variant="primary" type="submit" className="w-100" disabled={this.state.submittingForm}>
+						<div class="text-center">
+							<ReCAPTCHA
+								sitekey={config.captchaKey}
+								onChange={this.handleCaptchaReady}
+								class="captcha-center-helper"
+							/>
+						</div>
+						<Button variant="primary" type="submit" className="w-100" disabled={this.state.name.length===0 || !this.state.captchaToken || this.submittingForm}>
 						<Translate id="newvoice.submit"/> {this.state.submittingForm ? "..." : ""}
 						</Button>
 						<br/>
