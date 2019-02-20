@@ -2,10 +2,10 @@ import React from 'react';
 import $ from 'jquery';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 import { withLocalize } from "react-localize-redux";
 import { Translate } from "react-localize-redux";
 import { Helmet } from "react-helmet";
+import ErrorDialog from "./ErrorDialog";
 
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -100,7 +100,6 @@ class CreateNewVoice extends React.Component{
 			durationValue: parseFloat(this.state.durationValue),
 			captchaToken: e.target.elements["g-recaptcha-response"].value
 		};
-		const componentThis = this;
 		this.setState({submittingForm: true});
 		const that = this;
 		$.ajax(url, {
@@ -109,7 +108,7 @@ class CreateNewVoice extends React.Component{
 			type : 'POST',
 			success : (data, textStatus, jqXHR) => {
 				if("id" in data && "token" in data){
-					componentThis.props.history.push(`/kalama/${data.id}/${data.token}/open`);
+					that.props.history.push(`/kalama/${data.id}/${data.token}/open`);
 				}else{
 					that.setState({errorMessage: "Unknown Error Occured."});
 					that.setState({submittingForm: false});
@@ -130,17 +129,6 @@ class CreateNewVoice extends React.Component{
 	render() {
 		return (
 			<main class="container flex-column d-flex p-2">
-				<Modal show={this.state.errorMessage} onHide={this.clearCloseErrorMessageDialog}>
-					<Modal.Header closeButton>
-						<Modal.Title>Error</Modal.Title>
-					</Modal.Header>
-					<Modal.Body>{this.state.errorMessage}</Modal.Body>
-					<Modal.Footer>
-						<Button variant="danger" onClick={this.clearCloseErrorMessageDialog}>
-						OK
-						</Button>
-					</Modal.Footer>
-					</Modal>
 				<Translate>
 					{({ translate }) => (
 						<Helmet>
@@ -149,6 +137,7 @@ class CreateNewVoice extends React.Component{
 						</Helmet>)
 					}
 				</Translate>
+				<ErrorDialog message={this.state.errorMessage} onClose={this.clearCloseErrorMessageDialog} />
 				<div class="d-flex mx-auto w-100 justify-content-center align-items-center">
 					<Form onSubmit={this.handleFormSubmit} className="w-75">
 						<Form.Group controlId="formBasicName">

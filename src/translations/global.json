@@ -1,7 +1,9 @@
 {
 	"global": {
 		"TODO": ["TODO", "TODO"],
-		"title": ["Read with Your Voice", "ilo toki pi kalama sina"]
+		"title": ["Read with Your Voice", "ilo toki pi kalama sina"],
+		"error": ["Error", "ike!"],
+		"ok": ["OK", "a!"]
 	},
 	"home": {
 		"header": ["Toki Pona Text to Speech with Your Voice!", "TODO"],
@@ -29,9 +31,13 @@
 	"record": {
 		"title": ["Modify Voice", "ante e kalama"],
 		"currentsentence": ["Current Sentence:", "TODO"],
-		"search": ["(Search Setence by Word)", "TODO"],
+		"search": ["(Search Sentence by Word)", "TODO"],
+		"record": ["Record", "TODO"],
+		"stopRecord": ["Cancel", "TODO"],
 		"play": ["Play", "TODO"],
+		"stopPlay": ["Stop Playing", "TODO"],
 		"next": ["Next", "TODO"],
+		"noMoreNext": ["(End)", "TODO"],
 		"switch": ["Switch to Text-to-Speech Page", "TODO"]
 	},
 	"playback": {
