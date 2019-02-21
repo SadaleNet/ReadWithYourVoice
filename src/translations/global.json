@@ -22,7 +22,7 @@
 		"stressedsyllable": ["Stressed Syllable", "TODO"],
 		"unstressedsyllable": ["Unstressed Syllable", "TODO"],
 		"duration": ["Syllable Duration (ms)", "TODO"],
-		"test": ["Test pitch and speed (jan li wile kepeken ilo)", "TODO"],
+		"test": ["▶ Test pitch and speed (jan li wile kepeken ilo)", "TODO"],
 		"submit": ["Start Recording", "TODO"],
 		"tos": ["By pressing the button above, you agree with the Terms of Service and Privacy Policy.", "TODO"],
 		"toscontent": ["TODO\nContent of TOS goes here", "TODO"],
@@ -34,20 +34,24 @@
 		"search": ["(Search Sentence by Word)", "TODO"],
 		"record": ["Record", "TODO"],
 		"stopRecord": ["Cancel", "TODO"],
-		"play": ["Play", "TODO"],
-		"stopPlay": ["Stop Playing", "TODO"],
+		"play": ["▶ Play", "TODO"],
+		"stopPlay": ["⏸ Stop Playing", "TODO"],
 		"next": ["Next", "TODO"],
 		"noMoreNext": ["(End)", "TODO"],
 		"switch": ["Switch to Text-to-Speech Page", "TODO"]
 	},
 	"playback": {
+		"title": ["Playback", "o kalama!"],
 		"changename": ["Change", "TODO"],
 		"stressed": ["Stressed", "TODO"],
 		"unstressed": ["Unstressed", "TODO"],
 		"duration": ["Syllable Duration", "TODO"],
-		"play": ["Play", "TODO"],
-		"text": ["Text to be Synthesized:", "TODO"],
-		"switch": ["Switch to Recording Page", "TODO"]
+		"separation": ["Word Separation: ", "TODO"],
+		"play": ["▶ Play", "TODO"],
+		"stopPlay": ["⏸ Stop Playing", "TODO"],
+		"selectText": ["(Choose from available text)", "(o kepeken nimu mute ni!)"],
+		"switch": ["Switch to Recording Page", "TODO"],
+		"share": ["Love this tool? Do share it with your friends!", "TODO"]
 	},
 	"copylinks": {
 		"modify": ["Use this link to modify this voice in the future. Do not share it to anyone else or they'd also be able to modify this voice.", "TODO"],

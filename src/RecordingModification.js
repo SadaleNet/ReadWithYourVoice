@@ -17,8 +17,8 @@ import config from './private/config.json';
 
 let loadAudio = require('./audioSynth.js').loadAudio;
 let reloadAudio = require('./audioSynth.js').reloadAudio;
-let stopPlaying = require('./audioSynth.js').stopPlaying;
 let playSentence = require('./audioSynth.js').playSentence;
+let stopPlaying = require('./audioSynth.js').stopPlaying;
 
 class RecordingModification extends React.Component{
 	constructor(props) {
@@ -103,6 +103,7 @@ class RecordingModification extends React.Component{
 			}
 		};
 	}
+	//TODO: Code duplication with RecordPlayback.js. Consider extracting it.
 	ajaxErrorHandler = (jqXHR, textStatus, errorThrown) => {
 		this.setState({errorMessage:
 			( (jqXHR.responseJSON && "errorMessage" in jqXHR.responseJSON) ?
@@ -112,7 +113,7 @@ class RecordingModification extends React.Component{
 	componentDidMount(){
 		this.prepareRecorder();
 
-		let that = this;		
+		let that = this;
 		//Read public metadata
 		$.ajax(
 		`${config.apiEndPoint}/${window.location.href.split('/').slice(-3)[0]}/metadata.json`,
@@ -156,6 +157,7 @@ class RecordingModification extends React.Component{
 			error : that.ajaxErrorHandler,
 		});
 	}
+	//TODO: Code duplication with RecordPlayback.js. Consider extracting it.
 	clearCloseErrorMessageDialog = () => {
 		this.setState({errorMessage: ""});
 	}
@@ -245,11 +247,11 @@ class RecordingModification extends React.Component{
 	}
 	render() {
 		return (
-			<main class="container flex-column d-flex h-100 p-2">
+			<main class="container flex-column d-flex flex-grow-1 p-2">
 				<Translate>
 					{({ translate }) => (
 						<Helmet>
-							<title>{translate("record.title")+' | '+translate("global.title")}</title>
+							<title>{this.state.name+' | '+translate("record.title")+' | '+translate("global.title")}</title>
 						</Helmet>)
 					}
 				</Translate>
@@ -272,9 +274,12 @@ class RecordingModification extends React.Component{
 							</Form.Control>
 						</Form.Group>
 
-						<Form.Control as="select" className="w-100" onChange={this.handleChangeSentenceByWord} value="-1" disabled={this.state.step !== "idle"}>
+						<Form.Control as="select" className="w-100"
+							onChange={this.handleChangeSentenceByWord}
+							value="-1"
+							disabled={this.state.step !== "idle"}>
 							<Translate>{({ translate }) => (
-								<option value="-1">{translate("record.search")}</option>
+								<option value="-1" selected>{translate("record.search")}</option>
 							)}</Translate>
 							{
 								this.getWordList().map((x) => (
@@ -285,7 +290,7 @@ class RecordingModification extends React.Component{
 					</Form>
 				</div>
 				<div class="d-flex flex-column mx-auto flex-grow-1 w-100 h-100 justify-content-center align-items-center">
-					<big><b>
+					<big class="text-center"><b>
 					{this.getCurrentSentence().sentence}
 					</b></big>
 					<SpinningWheel show={true} style={(!this.state.name || this.state.currentSentence===-1 || this.state.step === "uploading") ? {} : {visibility:"hidden"}}/>

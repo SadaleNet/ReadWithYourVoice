@@ -109,6 +109,18 @@ function reloadAudio(words, loadedCallback){
 	}
 }
 
+
+function reconfigAudio(config){
+	if("stressedFrequency" in config)
+		stressedFrequency = config.stressedFrequency;
+	if("unstressedFrequency" in config)
+		unstressedFrequency = config.unstressedFrequency;
+	if("syllableDuration" in config)
+		syllableDuration = config.syllableDuration;
+	if("fileSeparationDuration" in config)
+		fileSeparationDuration = config.fileSeparationDuration;
+}
+
 let stopPlayingNow;
 function stopPlaying(){
 	stopPlayingNow = true;
@@ -144,7 +156,7 @@ function playNextWord(message, audioPlayEndCallback, recordMode=false){
 	}
 	let currentWord;
 
-	if(wordList.indexOf(message[0]) !== -1){ //Official word
+	if(!firstSyllablePlayed && wordList.indexOf(message[0]) !== -1){ //Official word
 		currentWord = message[0];
 		message = message.slice(1);
 	}else{ //Unofficial word! We're taking the first syllable as a "word".
@@ -154,26 +166,29 @@ function playNextWord(message, audioPlayEndCallback, recordMode=false){
 			message = message.slice(1);
 		}else{ 
 			//Extracts the first syllable. (?=) is a look-ahead operation. See https://stackoverflow.com/a/3926546
-			const match = message[0].lower().match(/^[kptnmsjwl]?[aeiou](n(?=([^aeiou]|$)))?/gi);
+			const match = message[0].toLowerCase().match(/[kptnmsjwl]?[aeiou](n(?=([^aeiou]|$)))?/gi);
 			if(match){
 				const firstSyllable = match[0];
 				currentWord = firstSyllable + (firstSyllablePlayed ? '_' : '-');
 				firstSyllablePlayed = true;
-				message[0] = message[0].slice(firstSyllable.length);
+				message[0] = message[0].slice(message[0].toLowerCase().indexOf(firstSyllable)+firstSyllable.length);
 				if(message[0].length === 0){
 					message = message.slice(1);
 					firstSyllablePlayed = false;
 				}
 			}else{
-				currentWord = "seme";
-				message = message.slice(1);
+				//No more valid syllable in this word.
+				firstSyllablePlayed = false;
+				setTimeout(() => playNextWord(message.slice(1), audioPlayEndCallback, recordMode), 0);
+				return;
 			}
 		}
 	}
 
 	//Play the audio
 	const numVowel = currentWord.match(/[aeiou]/gi).length;
-	if(!recordMode && audioList[wordList.indexOf(currentWord)]){ //Audio clip available
+	if(!recordMode && audioList[wordList.indexOf(currentWord)]
+		&& !audioList[wordList.indexOf(currentWord)].error){ //Audio clip available
 		const audio = new Audio(audioList[wordList.indexOf(currentWord)].src);
 		audio.play();
 	}else{ //Audio clip not available. Playing square wave instead.
@@ -213,6 +228,7 @@ function playSentence(message, audioPlayEndCallback, recordMode=false){
 	message = message.replace(/[^A-Za-z\-_]+/g, " ");
 	let wordsQueue = message.split(" ").filter(word => word.length > 0);
 	stopPlayingNow = false;
+	firstSyllablePlayed = false;
 	previousWordStartTime = (new Date()).getTime();
 	if(!recordMode){
 		playNextWord(wordsQueue, audioPlayEndCallback, recordMode);
@@ -226,6 +242,7 @@ function playSentence(message, audioPlayEndCallback, recordMode=false){
 }
 
 exports.loadAudio = loadAudio;
+exports.reconfigAudio = reconfigAudio;
 exports.reloadAudio = reloadAudio;
 exports.playSentence = playSentence;
 exports.stopPlaying = stopPlaying;

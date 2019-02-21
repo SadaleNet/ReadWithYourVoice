@@ -172,7 +172,7 @@ class CreateNewVoice extends React.Component{
 						</Form.Group>
 						<div class="text-center">
 							<Button variant="success" className="text-center" onClick={this.playAudioTest} disabled={this.state.playingTestAudio}>
-							▶ <Translate id="newvoice.test"/>
+							<Translate id="newvoice.test"/>
 							</Button>
 						</div>
 						<br/>
