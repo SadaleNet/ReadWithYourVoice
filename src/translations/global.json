@@ -22,7 +22,7 @@
 		"stressedsyllable": ["Stressed Syllable", "TODO"],
 		"unstressedsyllable": ["Unstressed Syllable", "TODO"],
 		"duration": ["Syllable Duration (ms)", "TODO"],
-		"test": ["Test pitch and speed (mi wile kepeken e ilo)", "TODO"],
+		"test": ["Test pitch and speed (jan li wile kepeken ilo)", "TODO"],
 		"submit": ["Start Recording", "TODO"],
 		"tos": ["By pressing the button above, you agree with the Terms of Service and Privacy Policy.", "TODO"],
 		"toscontent": ["TODO\nContent of TOS goes here", "TODO"],

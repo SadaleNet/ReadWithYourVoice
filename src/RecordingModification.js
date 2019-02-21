@@ -13,6 +13,8 @@ import Form from 'react-bootstrap/Form'
 import SpinningWheel from './SpinningWheel'
 import ErrorDialog from "./ErrorDialog";
 
+import config from './private/config.json';
+
 let loadAudio = require('./audioSynth.js').loadAudio;
 let reloadAudio = require('./audioSynth.js').reloadAudio;
 let stopPlaying = require('./audioSynth.js').stopPlaying;
@@ -60,7 +62,7 @@ class RecordingModification extends React.Component{
 					)
 				};
 				$.ajax(
-				`http://localhost:3001/api/${window.location.href.split('/').slice(-3)[0]}/send-audio`, //TODO: Variable API endpoint
+				`${config.apiEndPoint}/api/${window.location.href.split('/').slice(-3)[0]}/send-audio`,
 				{
 					data : JSON.stringify(dataToBeSent),
 					contentType : 'application/json',
@@ -113,7 +115,7 @@ class RecordingModification extends React.Component{
 		let that = this;		
 		//Read public metadata
 		$.ajax(
-		`http://localhost:3001/${window.location.href.split('/').slice(-3)[0]}/metadata.json`, //TODO: Variable API endpoint
+		`${config.apiEndPoint}/${window.location.href.split('/').slice(-3)[0]}/metadata.json`,
 		{
 			type : 'GET',
 			success : (data, textStatus, jqXHR) => {
@@ -123,7 +125,7 @@ class RecordingModification extends React.Component{
 					unstressedFrequency: data.unstressedFrequency,
 					durationValue: data.durationValue
 				});
-				loadAudio(`http://localhost:3001/${window.location.href.split('/').slice(-3)[0]}`, //TODO: Variable API endpoint
+				loadAudio(`${config.apiEndPoint}/${window.location.href.split('/').slice(-3)[0]}`,
 				{
 					stressedFrequency: data.stressedFrequency,
 					unstressedFrequency: data.unstressedFrequency,
@@ -139,7 +141,7 @@ class RecordingModification extends React.Component{
 			token: window.location.href.split('/').slice(-2)[0]
 		};
 		$.ajax(
-		`http://localhost:3001/api/${window.location.href.split('/').slice(-3)[0]}/get-private-metadata`, //TODO: Variable API endpoint
+		`${config.apiEndPoint}/api/${window.location.href.split('/').slice(-3)[0]}/get-private-metadata`,
 		{
 			data : JSON.stringify(dataToBeSent),
 			contentType : 'application/json',

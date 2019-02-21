@@ -13,13 +13,15 @@ import CopyLinks from './CopyLinks'
 import SpinningWheel from './SpinningWheel'
 import ErrorDialog from "./ErrorDialog";
 
+import config from './private/config.json';
+
 class RecordingIntroduction extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {tokenVerified: false, errorMessage: ""}
 	}
 	componentDidMount(){
-		const url = `http://localhost:3001/api/${window.location.href.split('/').slice(-3)[0]}/get-private-metadata`; //TODO: Variable API endpoint
+		const url = `${config.apiEndPoint}/api/${window.location.href.split('/').slice(-3)[0]}/get-private-metadata`;
 		let dataToBeSent = {
 			token: window.location.href.split('/').slice(-2)[0]
 		};

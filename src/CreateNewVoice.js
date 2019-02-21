@@ -61,7 +61,7 @@ class CreateNewVoice extends React.Component{
 		};
 	}
 	playAudioTest = () => {
-		const sampleSentence = "mi wile kepeken e ilo.";
+		const sampleSentence = "jan li wile kepeken ilo.";
 		loadAudio('', {
 			stressedFrequency: this.state.stressedFrequency,
 			unstressedFrequency: this.state.unstressedFrequency,
@@ -92,7 +92,7 @@ class CreateNewVoice extends React.Component{
 	}
 	handleFormSubmit = (e) => {
 		e.preventDefault();
-		const url = "http://localhost:3001/api/kalama-sin"; //TODO: Variable API endpoint
+		const url = `${config.apiEndPoint}/api/kalama-sin`;
 		const dataToBeSent = {
 			name: this.state.name,
 			stressedFrequency: parseFloat(this.state.stressedFrequency),
