@@ -54,7 +54,7 @@ class CreateNewVoice extends React.Component{
 			stressedFrequency:nameToFrequency("A3"),
 			unstressedFrequency:nameToFrequency("A2"),
 			durationValue: 200,
-			captchaToken: "dummyTokenToBypassCaptcha", //TODO: set this to "" to re-enable captcha
+			captchaToken: "captchaKey" in config ? "" : "dummyTokenToBypassCaptcha",
 			errorMessage: "", //If it isn't empty, an error dialog will be shown.
 			submittingForm: false,
 			playingTestAudio: false
@@ -98,7 +98,7 @@ class CreateNewVoice extends React.Component{
 			stressedFrequency: parseFloat(this.state.stressedFrequency),
 			unstressedFrequency: parseFloat(this.state.unstressedFrequency),
 			durationValue: parseFloat(this.state.durationValue),
-			captchaToken: e.target.elements["g-recaptcha-response"].value
+			captchaToken: "captchaKey" in config ? e.target.elements["g-recaptcha-response"].value : ""
 		};
 		this.setState({submittingForm: true});
 		const that = this;
@@ -176,13 +176,16 @@ class CreateNewVoice extends React.Component{
 							</Button>
 						</div>
 						<br/>
-						<div class="text-center">
-							<ReCAPTCHA
-								sitekey={config.captchaKey}
-								onChange={this.handleCaptchaReady}
-								class="captcha-center-helper"
-							/>
-						</div>
+						{
+							("captchaKey" in config) ? (
+								<div class="text-center">
+									<ReCAPTCHA
+										sitekey={config.captchaKey}
+										onChange={this.handleCaptchaReady}
+										class="captcha-center-helper"
+									/>
+								</div> ) : ""
+						}
 						<Button variant="primary" type="submit" className="w-100" disabled={this.state.name.length===0 || !this.state.captchaToken || this.submittingForm}>
 						<Translate id="newvoice.submit"/> {this.state.submittingForm ? "..." : ""}
 						</Button>
