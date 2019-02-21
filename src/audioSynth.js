@@ -103,8 +103,9 @@ function loadAudio(path, config, loadedCallback){
 function reloadAudio(words, loadedCallback){
 	const audioLoaded = audioLoadedHandlerFactory(words.length, loadedCallback);
 	for(let word of words){
+		//The Math.random() is used for forcing the website to reload the audio. It prevents caching so that the newly recorded audio would get "updated" to the browser immediately
 		audioList[wordList.indexOf(word)] =
-			createAudio(`${audioBasePath}/${word}.ogg`, audioLoaded);
+			createAudio(`${audioBasePath}/${word}.ogg?${new Date().getTime()}`, audioLoaded);
 	}
 }
 
