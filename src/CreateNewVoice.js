@@ -30,13 +30,14 @@ function nameToFrequency(name){
 	return null;
 }
 
-function frequencyToName(frequency){
-	for(let i of frequencyAndNames){
-		if(i.frequency === frequency)
-			return i.name;
-	}
-	return null;
-}
+//Unused function. Commenting out to remove lint error
+//function frequencyToName(frequency){
+//	for(let i of frequencyAndNames){
+//		if(i.frequency === frequency)
+//			return i.name;
+//	}
+//	return null;
+//}
 
 function PitchSelector(props) {
 	return (

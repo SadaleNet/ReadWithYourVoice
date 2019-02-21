@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { withLocalize } from "react-localize-redux";
 import { Translate } from "react-localize-redux";
 
+import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 
 const NavBar = ({languages, activeLanguage, setActiveLanguage}) => (
@@ -16,10 +17,11 @@ const NavBar = ({languages, activeLanguage, setActiveLanguage}) => (
 		<Navbar.Collapse id="responsive-navbar-nav">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<a class="nav-link" onClick={() => setActiveLanguage("tkp")}>toki pona</a>
+					<Button variant="light" onClick={() => setActiveLanguage("tkp")}>toki pona</Button>
 				</li>
+				&nbsp;
 				<li class="nav-item">
-					<a class="nav-link" onClick={() => setActiveLanguage("en")}>English</a>
+					<Button variant="light" onClick={() => setActiveLanguage("en")}>English</Button>
 				</li>
 			</ul>
 		</Navbar.Collapse>

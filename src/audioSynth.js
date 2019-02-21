@@ -59,8 +59,6 @@ let fileSeparationDuration;
 
 let previousWordStartTime;
 
-//TODO: use .addEventListener('canplaythrough', isAppLoaded, false); to check if all audio had been loaded
-
 function audioLoadedHandlerFactory(targetCalledNum, loadedCallback){
 	let numAudioLoaded = 0;
 	return () => {
@@ -160,7 +158,7 @@ function playNextWord(message, audioPlayEndCallback, recordMode=false){
 		currentWord = message[0];
 		message = message.slice(1);
 	}else{ //Unofficial word! We're taking the first syllable as a "word".
-		if(message[0].match(/^[kptnmsjwl]?[aeiou]n?[\-_]/gi)){
+		if(message[0].match(/^[kptnmsjwl]?[aeiou]n?[-_]/gi)){
 			//It's a syllable like "jan-". We can use it without additional processing
 			currentWord = message[0];
 			message = message.slice(1);
