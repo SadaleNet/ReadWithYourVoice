@@ -10,6 +10,7 @@ import ErrorDialog from "./ErrorDialog";
 import ReCAPTCHA from "react-google-recaptcha";
 
 import config from './private/config.json';
+let tos = require("./private/TosText.js").text;
 
 let loadAudio = require('./audioSynth.js').loadAudio;
 let playSentence = require('./audioSynth.js').playSentence;
@@ -193,8 +194,8 @@ class CreateNewVoice extends React.Component{
 						<br/>
 						<small>
 						<Translate id="newvoice.tos"/>
-						<pre>
-						<Translate id="newvoice.toscontent"/>
+						<pre style={{whiteSpace: "pre-wrap"}}>
+						{tos}
 						</pre>
 						</small>
 					</Form>
