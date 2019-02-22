@@ -35,7 +35,7 @@
 		"record": ["Record", "TODO"],
 		"stopRecord": ["Cancel", "TODO"],
 		"play": ["▶ Play", "TODO"],
-		"stopPlay": ["⏸ Stop Playing", "TODO"],
+		"stopPlay": ["⏸ Stop", "TODO"],
 		"next": ["Next", "TODO"],
 		"noMoreNext": ["(End)", "TODO"],
 		"switch": ["Switch to Text-to-Speech Page", "TODO"]
@@ -48,7 +48,7 @@
 		"duration": ["Syllable Duration", "TODO"],
 		"separation": ["Word Separation: ", "TODO"],
 		"play": ["▶ Play", "TODO"],
-		"stopPlay": ["⏸ Stop Playing", "TODO"],
+		"stopPlay": ["⏸ Stop", "TODO"],
 		"selectText": ["(Choose from available text)", "(o kepeken nimu mute ni!)"],
 		"switch": ["Switch to Recording Page", "TODO"],
 		"share": ["Love this tool? Do share it with your friends!", "TODO"]
