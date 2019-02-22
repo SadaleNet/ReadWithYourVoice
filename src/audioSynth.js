@@ -83,6 +83,8 @@ function loadAudio(path, config, loadedCallback){
 	syllableDuration = config.syllableDuration;
 	fileSeparationDuration = config.fileSeparationDuration;
 	audioBasePath = path;
+	
+	const queryString = config.reload ? `?${new Date().getTime()}` : "";
 
 	if(!audioBasePath){
 		audioList = wordList.map(x => null);
@@ -93,7 +95,7 @@ function loadAudio(path, config, loadedCallback){
 	audioList = [];
 	for(let word of wordList){
 		audioList.push(
-			createAudio(`${audioBasePath}/${word}.ogg`, audioLoaded)
+			createAudio(`${audioBasePath}/${word}.ogg${queryString}`, audioLoaded)
 		);
 	}
 }

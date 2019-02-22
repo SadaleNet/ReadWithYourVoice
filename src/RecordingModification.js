@@ -132,6 +132,7 @@ class RecordingModification extends React.Component{
 					unstressedFrequency: data.unstressedFrequency,
 					syllableDuration: data.durationValue,
 					fileSeparationDuration: data.durationValue,
+					reload: true,
 				});
 			},
 			error : that.ajaxErrorHandler,

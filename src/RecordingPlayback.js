@@ -42,7 +42,6 @@ class RecordingPlayback extends React.Component{
 	}
 
 	componentDidMount(){
-		console.log(articles);
 		let that = this;
 		//Read public metadata
 		$.ajax(
@@ -64,7 +63,8 @@ class RecordingPlayback extends React.Component{
 					stressedFrequency: data.stressedFrequency,
 					unstressedFrequency: data.unstressedFrequency,
 					syllableDuration: data.durationValue,
-					fileSeparationDuration: data.durationValue
+					fileSeparationDuration: data.durationValue,
+					reload: this.props.location.pathname.endsWith('kute'),
 				}, () => {
 					that.setState({text: "", loaded: true });
 				});
