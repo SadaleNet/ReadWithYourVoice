@@ -24,7 +24,7 @@
 		"unstressedsyllable": ["Unstressed Syllable", "wawa pi kalama nanpa wan ala"],
 		"duration": ["Syllable Duration (ms)", "tenpo kalama"],
 		"test": ["▶ Test pitch and speed (jan li wile kepeken ilo)", "▶ o kute! (jan li wile kepeken ilo)"],
-		"submit": ["Start Recording", "o open pana e kalama!"],
+		"submit": ["Start Recording (Earphone/Headset Recommended)", "o open pana e kalama!"],
 		"tos": ["By pressing the button above, you agree with the Terms of Service and Privacy Policy below:",
 			"sina pilin e nena ni, la sina wile kute e nimi lawa ni. ona li lon toki Inli taso:"],
 		"nochange": ["You cannot change this later!", "tenpo kama la sina ken ala ante e ni."]
