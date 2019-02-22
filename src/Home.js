@@ -62,7 +62,7 @@ class Home extends React.Component{
 					<small>
 						<Translate id="home.sourcecode">Source code available on</Translate>
 						&nbsp;
-						<a href="https://github.com/SadaleNet/TODO" target="_blank" rel="noopener noreferrer">
+						<a href="https://github.com/SadaleNet/ReadWithYourVoice" target="_blank" rel="noopener noreferrer">
 							<Translate id="home.github">Github</Translate>
 						</a>
 					</small>
