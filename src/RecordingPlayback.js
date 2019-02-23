@@ -57,7 +57,7 @@ class RecordingPlayback extends React.Component{
 		let that = this;
 		//Read public metadata
 		$.ajax(
-		`${config.apiEndPoint}/${this.getVoiceId()}/metadata.json`,
+		`${config.dataEndPoint}/${this.getVoiceId()}/metadata.json`,
 		{
 			type : 'GET',
 			success : (data, textStatus, jqXHR) => {
@@ -70,7 +70,7 @@ class RecordingPlayback extends React.Component{
 					audioSeparation: data.durationValue,
 				});
 
-				loadAudio(`${config.apiEndPoint}/${this.getVoiceId()}`,
+				loadAudio(`${config.dataEndPoint}/${this.getVoiceId()}`,
 				{
 					stressedFrequency: data.stressedFrequency,
 					unstressedFrequency: data.unstressedFrequency,

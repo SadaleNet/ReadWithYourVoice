@@ -39,6 +39,8 @@ The configuration is available in src/private/config.json. It contains two param
 
 `apiEndPoint` is the URL to the API. For example, it can be `http://localhost:3001`
 
+`dataEndPoint` is the URL to the assets server for the public voice clips and metadata. For example, it can be `http://localhost:3001`
+
 # Development
 
 To perform development, run `yarn install` and `yarn start`. After that, open `http://localhost:3000` to start the development.

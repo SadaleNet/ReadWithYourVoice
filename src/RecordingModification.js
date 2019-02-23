@@ -128,7 +128,7 @@ class RecordingModification extends React.Component{
 		let that = this;
 		//Read public metadata
 		$.ajax(
-		`${config.apiEndPoint}/${window.location.href.split('/').slice(-3)[0]}/metadata.json`,
+		`${config.dataEndPoint}/${window.location.href.split('/').slice(-3)[0]}/metadata.json`,
 		{
 			type : 'GET',
 			success : (data, textStatus, jqXHR) => {
@@ -138,7 +138,7 @@ class RecordingModification extends React.Component{
 					unstressedFrequency: data.unstressedFrequency,
 					durationValue: data.durationValue
 				});
-				loadAudio(`${config.apiEndPoint}/${window.location.href.split('/').slice(-3)[0]}`,
+				loadAudio(`${config.dataEndPoint}/${window.location.href.split('/').slice(-3)[0]}`,
 				{
 					stressedFrequency: data.stressedFrequency,
 					unstressedFrequency: data.unstressedFrequency,
