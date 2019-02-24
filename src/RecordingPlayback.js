@@ -67,7 +67,7 @@ class RecordingPlayback extends React.Component{
 					stressedFrequency: data.stressedFrequency,
 					unstressedFrequency: data.unstressedFrequency,
 					durationValue: data.durationValue,
-					audioSeparation: data.durationValue,
+					audioSeparation: data.durationValue/2,
 				});
 
 				loadAudio(`${config.dataEndPoint}/${this.getVoiceId()}`,
@@ -78,7 +78,7 @@ class RecordingPlayback extends React.Component{
 					fileSeparationDuration: data.durationValue,
 					reload: this.props.location.pathname.endsWith('kute'),
 				}, () => {
-					that.setState({text: "", loaded: true });
+					that.setState({text: "sina pana e nimi tawa ilo ni, la ilo ni li ken toki tawa sina. ona li pona mute a!", loaded: true });
 				});
 			},
 			error : that.ajaxErrorHandler,

@@ -143,7 +143,7 @@ class RecordingModification extends React.Component{
 					stressedFrequency: data.stressedFrequency,
 					unstressedFrequency: data.unstressedFrequency,
 					syllableDuration: data.durationValue,
-					fileSeparationDuration: data.durationValue,
+					fileSeparationDuration: data.durationValue/2,
 					reload: true,
 				});
 			},
