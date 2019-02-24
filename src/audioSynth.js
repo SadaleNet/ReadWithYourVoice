@@ -166,10 +166,12 @@ function playNextWord(message, audioPlayEndCallback, recordMode=false){
 		}
 		return;
 	}
-	let fileSeparationMultiplier = 1;
+	let fileSeparationMultiplier = 1.0;
+	let punctuation = '';
 
 	if(message[0].match(/[,.:!?]$/g)){
 		fileSeparationMultiplier = 3.0;
+		punctuation = message[0].slice(-1);
 		message[0] = message[0].slice(0, -1);
 	}
 
@@ -185,13 +187,16 @@ function playNextWord(message, audioPlayEndCallback, recordMode=false){
 			message = message.slice(1);
 		}else{ 
 			//Extracts the first syllable. (?=) is a look-ahead operation. See https://stackoverflow.com/a/3926546
-			const match = message[0].toLowerCase().match(/[kptnmsjwl]?[aeiou](n(?=([^aeiou]|$)))?/gi);
+			function extractFirstSyllable(text){
+				return text.toLowerCase().match(/[kptnmsjwl]?[aeiou](n(?=([^aeiou]|$)))?/gi);
+			}
+			const match = extractFirstSyllable(message[0]);
 			if(match){
 				const firstSyllable = match[0];
 				currentWord = firstSyllable + (firstSyllablePlayed ? '_' : '-');
 				firstSyllablePlayed = true;
-				message[0] = message[0].slice(message[0].toLowerCase().indexOf(firstSyllable)+firstSyllable.length);
-				if(message[0].length === 0){
+				message[0] = message[0].slice(message[0].toLowerCase().indexOf(firstSyllable)+firstSyllable.length)+punctuation;
+				if(!extractFirstSyllable(message[0])){
 					message = message.slice(1);
 					firstSyllablePlayed = false;
 				}else{
