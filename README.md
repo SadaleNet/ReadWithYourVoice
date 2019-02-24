@@ -65,7 +65,7 @@ With this design, the users are able to create a new voice without registering a
 
 # License
 
-This project is mostly released under BSD 2-clause license. Please notice that this repository includes third party libraries that is distributed under their own license. Particularly a distribution of opus-recorder is included in this repository.
+This project is mostly released under BSD 2-clause license. Please notice that this repository includes third party libraries that is distributed under their own license. Particularly a distribution of opus-recorder is included in this repository. In addition, some sample articles included in the website are copyrighted by their author. They are used for this project with the permission from the authors.
 
 # Remarks
 
