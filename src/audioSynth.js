@@ -194,6 +194,8 @@ function playNextWord(message, audioPlayEndCallback, recordMode=false){
 				if(message[0].length === 0){
 					message = message.slice(1);
 					firstSyllablePlayed = false;
+				}else{
+					fileSeparationMultiplier = 0.5;
 				}
 			}else{
 				//No more valid syllable in this word.
