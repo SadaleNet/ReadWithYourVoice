@@ -47,7 +47,7 @@ class Home extends React.Component{
 					</small>
 					</p>
 					<p>
-						<Link to="/40b5393d-a9f6-4e0b-8a5f-c59538d85ff0">
+						<Link to="/00000000-0000-0000-0000-000000000000">
 							<Button variant="primary">
 							<Translate id="home.demovoice">Demo Voice</Translate>
 							</Button>
