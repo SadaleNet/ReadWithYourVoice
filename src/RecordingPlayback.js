@@ -48,7 +48,7 @@ class RecordingPlayback extends React.Component{
 			loaded: false,
 			playing: false,
 			changingName: false,
-			text: "Loading audio... It may take a while...\no awen!",
+			text: "Loading audio... It may take a while...\nPlease allow up to a minute...\nIt's reported that this website doesn't work on Safari.\no awen!",
 			errorMessage: "",
 		};
 	}
