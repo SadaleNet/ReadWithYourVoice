@@ -81,8 +81,10 @@ function audioLoadedHandlerFactory(targetCalledNum, loadedCallback){
 
 function createAudio(path, audioLoaded){
 	let audio = new Audio();
-	audio.addEventListener('canplaythrough', audioLoaded);
-	audio.addEventListener('error', audioLoaded);
+	if(audioLoaded){
+		audio.addEventListener('canplaythrough', audioLoaded);
+		audio.addEventListener('error', audioLoaded);
+	}
 	audio.preload = "auto";
 	audio.src = path;
 	audio.load();
@@ -102,7 +104,12 @@ function loadAudio(path, config, loadedCallback){
 		audioList = wordList.map(x => null);
 		return;
 	}
-	const audioLoaded = audioLoadedHandlerFactory(wordList.length, loadedCallback);
+
+	//The +1 is for the beat.ogg
+	const audioLoaded = audioLoadedHandlerFactory(wordList.length+1, loadedCallback);
+
+	//Load the beat ogg file. Load it before loading anything else because 'canplaythrough' event isn't very reliable.
+	createAudio(require('./assets/beat.ogg'), audioLoaded);
 
 	audioList = [];
 	for(let word of wordList){
