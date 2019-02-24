@@ -42,8 +42,9 @@ class RecordingModification extends React.Component{
 			durationValue: 0,
 			sentences: [],
 			currentSentence: -1,
+			audioLoaded: false,
 			errorMessage: "",
-			step: "idle" //idle, playing, recording, uploading
+			step: "loading" //loading, idle, playing, recording, uploading
 		};
 	}
 	prepareRecorder(){
@@ -145,6 +146,8 @@ class RecordingModification extends React.Component{
 					syllableDuration: data.durationValue,
 					fileSeparationDuration: data.durationValue/2,
 					reload: true,
+				}, () => {
+					that.setState({step: "idle"});
 				});
 			},
 			error : that.ajaxErrorHandler,
@@ -306,7 +309,7 @@ class RecordingModification extends React.Component{
 					<big class="text-center"><b>
 					{this.getCurrentSentence().sentence}
 					</b></big>
-					<SpinningWheel show={true} style={(!this.state.name || this.state.currentSentence===-1 || this.state.step === "uploading") ? {} : {visibility:"hidden"}}/>
+					<SpinningWheel show={true} style={(!this.state.name || this.state.currentSentence===-1 || this.state.step === "loading" || this.state.step === "uploading") ? {} : {visibility:"hidden"}}/>
 					<hr/>
 					<Button variant="danger" className="w-100" onClick={this.handleRecordButton}
 					disabled={(!this.state.name || this.state.currentSentence===-1
