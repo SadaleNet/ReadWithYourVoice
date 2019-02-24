@@ -9,7 +9,7 @@
 			"ilo ni li ken toki e toki pona kepeken kalama sina!"],
 		"description": ["Record 25 Toki Pona sentences and you can synthesize arbitrary Toki Pona text using your voice!",
 			"sina o toki e nimi mute pi toki pona kepeken ilo ni, la ilo ni li ken toki e nimi ali kepeken kalama sina a!"],
-		"remarks": ["For synthesizing non-standard words, additional syllables had to be recorded.", ""],
+		"remarks": ["For synthesizing non-standard words, additional syllables has to be recorded.", ""],
 		"demovoice": ["Demo Voice", "o kute e kalama pi jan ni!"],
 		"startrecording": ["Start Recording!", "o pali e kalama sin!"],
 		"developedby": ["Developed by", "pali pi"],
