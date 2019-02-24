@@ -50,7 +50,7 @@
 		"separation": ["Word Separation: ", "tenpo awen: "],
 		"play": ["▶ Play", "▶ o kute!"],
 		"stopPlay": ["⏸ Stop", "⏸ o pini kute!"],
-		"selectText": ["(Choose from available text)", "(o kepeken nimu mute ni!)"],
+		"selectText": ["(Choose from available text)", "(o kepeken nimi mute ni!)"],
 		"switch": ["Switch to Recording Page", "o tawa lipu pi kalama ante!"],
 		"share": ["Love this tool? Do share it with your friends!", "ilo ni li pona tawa sina, la o toki tawa jan pona sina!"]
 	},
