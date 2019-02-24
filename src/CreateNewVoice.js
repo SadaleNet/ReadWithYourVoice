@@ -22,7 +22,6 @@ import ErrorDialog from "./ErrorDialog";
 import ReCAPTCHA from "react-google-recaptcha";
 
 import config from './private/config.json';
-let tos = require("./private/TosText.js").text;
 
 let loadAudio = require('./audioSynth.js').loadAudio;
 let playSentence = require('./audioSynth.js').playSentence;
@@ -205,10 +204,10 @@ class CreateNewVoice extends React.Component{
 						</Button>
 						<br/>
 						<small>
-						<Translate id="newvoice.tos"/>
-						<pre style={{whiteSpace: "pre-wrap"}}>
-						{tos}
-						</pre>
+						<Translate id="newvoice.tos"/><br/>
+						<a href={require("./private/tos.txt")} target="_blank" rel="noopener noreferrer">
+							{window.location.href.split('/').slice(0,3).join('/')+require("./private/tos.txt")}
+						</a>
 						</small>
 					</Form>
 				</div>

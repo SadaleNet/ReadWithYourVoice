@@ -53,7 +53,7 @@ To perform deployment, run `yarn install` and `yarn build`. After that, the cont
 
 Please notice that this website doesn't work without a back-end API server. Please refer to the README file of repository of the back-end on how to setup one.
 
-Keep in mind that there's a "Terms of Service and Privacy Policy" located in ./src/private/TosText.js. If you're hosting an instance of this website, you'd have to agree with the terms as an "operator". If you do not agree with the terms, modify the text inside the Terms of Service file before the deployment!
+Keep in mind that there's a "Terms of Service and Privacy Policy" located in ./src/private/tos.txt. If you're hosting an instance of this website, you'd have to agree with the terms as an "operator". If you do not agree with the terms, modify the text inside the Terms of Service file before the deployment!
 
 I wrote the "Terms of Service and Privacy Policy" myself. I'm not a lawyer. I'm not liable for any potential damage caused if you're hosting this website using the "Terms of Service and Privacy Policy" that I've written.
 

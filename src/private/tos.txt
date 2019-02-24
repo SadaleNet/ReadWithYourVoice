@@ -1,18 +1,3 @@
-/*
-Copyright 2019 Wong Cho Ching <https://sadale.net>
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-
-2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
-//This is the default Terms of Service and Privacy Policy. If you're hosting an instance of this website, please adapt it as needed.
-
-const text = `
 Terms of Service and Privacy Policy of "Read with Your Voice"
 
 0. Definition
@@ -43,6 +28,3 @@ Terms of Service and Privacy Policy of "Read with Your Voice"
 3.5. For the user-created content that the operator(s) will not proactively redistribute to any third party, there is a possibility that the user-created content would be leaked to third party by other means. This includes, but not limited to: a) the provider of the server(s) hosting this website may intentionally, or unintentionally redistribute the stored user-created content resides on the servers b) the user-created content stored on the servers were accessed by the mean of security exploit(s). c) user-created content could be made public due to malfunction of this website. In event of user-created content being made available that is not caused by the operator(s) proactively sharing the user-created content, the operator(s) of this website assumes no liability on any damage caused.
 3.6. Under the condition that the requirements of this terms of service and privacy policy are met, the operator(s) of this website is allowed to use the user-created content for any purpose.
 3.7. Depending on the configuration, reCAPTCHA may be integrated into this website, which is a third party service. The operator(s) of this website assumes no liability in case of privacy intrusion or any damage caused by any third party service integrated into this website.
-`;
-
-exports.text = text;
