@@ -166,6 +166,13 @@ function playNextWord(message, audioPlayEndCallback, recordMode=false){
 		}
 		return;
 	}
+	let fileSeparationMultiplier = 1;
+
+	if(message[0].match(/[,.:!?]$/g)){
+		fileSeparationMultiplier = 3.0;
+		message[0] = message[0].slice(0, -1);
+	}
+
 	let currentWord;
 
 	if(!firstSyllablePlayed && wordList.indexOf(message[0]) !== -1){ //Official word
@@ -219,8 +226,8 @@ function playNextWord(message, audioPlayEndCallback, recordMode=false){
 	//Calculate when to play the next word
 	if(!recordMode){
 		setToHappen(() => playNextWord(message, audioPlayEndCallback, recordMode),
-			previousWordStartTime + syllableDuration*numVowel + fileSeparationDuration);
-		previousWordStartTime += syllableDuration*numVowel+fileSeparationDuration;
+			previousWordStartTime + syllableDuration*numVowel + fileSeparationDuration*fileSeparationMultiplier);
+		previousWordStartTime += syllableDuration*numVowel+fileSeparationDuration*fileSeparationMultiplier;
 	}else{
 		if(numVowel<=2){
 			for(let i=numVowel; i<4; i++)
@@ -237,7 +244,8 @@ function playNextWord(message, audioPlayEndCallback, recordMode=false){
 }
 
 function playSentence(message, audioPlayEndCallback, recordMode=false){
-	message = message.replace(/[^A-Za-z\-_]+/g, " ");
+	message = message.replace(/[^A-Za-z\-_,.:!?]+/g, " ")
+		.replace(',', ', ').replace('.', '. ').replace(':', ': ').replace('!', '! ').replace('?', '? ');
 	let wordsQueue = message.split(" ").filter(word => word.length > 0);
 	stopPlayingNow = false;
 	firstSyllablePlayed = false;
