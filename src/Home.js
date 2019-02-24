@@ -47,7 +47,7 @@ class Home extends React.Component{
 					</small>
 					</p>
 					<p>
-						<Link to="/00000000-0000-0000-0000-000000000000">
+						<Link to="/kalama/00000000-0000-0000-0000-000000000000">
 							<Button variant="primary">
 							<Translate id="home.demovoice">Demo Voice</Translate>
 							</Button>
