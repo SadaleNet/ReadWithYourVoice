@@ -23,6 +23,7 @@ import Button from 'react-bootstrap/Button';
 class Home extends React.Component{
 	componentDidMount() {
 		document.title = "Read with Your Voice";
+		this.props.setExtraStyle("");
 	}
 	render() {
 		return (

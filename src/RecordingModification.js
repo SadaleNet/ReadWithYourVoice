@@ -124,6 +124,9 @@ class RecordingModification extends React.Component{
 		});
 	}
 	componentDidMount(){
+		//Set the style of the parent container so that the UI components would use the entire page height
+		this.props.setExtraStyle("h-100");
+
 		this.prepareRecorder();
 
 		let that = this;

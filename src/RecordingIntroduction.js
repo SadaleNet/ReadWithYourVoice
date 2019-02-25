@@ -33,6 +33,8 @@ class RecordingIntroduction extends React.Component{
 		this.state = {tokenVerified: false, errorMessage: ""}
 	}
 	componentDidMount(){
+		this.props.setExtraStyle("");
+
 		const url = `${config.apiEndPoint}/api/${window.location.href.split('/').slice(-3)[0]}/get-private-metadata`;
 		let dataToBeSent = {
 			token: window.location.href.split('/').slice(-2)[0]

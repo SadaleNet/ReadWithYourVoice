@@ -73,6 +73,9 @@ class CreateNewVoice extends React.Component{
 			playingTestAudio: false
 		};
 	}
+	componentDidMount() {
+		this.props.setExtraStyle("");
+	}
 	playAudioTest = () => {
 		const sampleSentence = "jan li wile kepeken ilo.";
 		loadAudio('', {

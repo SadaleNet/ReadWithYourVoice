@@ -54,6 +54,9 @@ class RecordingPlayback extends React.Component{
 	}
 
 	componentDidMount(){
+		//Set the style of the parent container so that the UI components would use the entire page height
+		this.props.setExtraStyle("h-100");
+
 		let that = this;
 		//Read public metadata
 		$.ajax(

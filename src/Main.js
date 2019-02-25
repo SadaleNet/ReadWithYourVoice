@@ -38,18 +38,24 @@ class Main extends React.Component {
 				defaultLanguage: "en"
 			}
 		});
+		this.state = {extraStyle: ""};
+	}
+
+	setExtraStyle = (style) => {
+		if(style !== this.state.extraStyle)
+			this.setState({extraStyle: style});
 	}
 
 	render() {
 		return (
-			<div class="d-flex flex-column h-100">
+			<div class={"d-flex flex-column "+this.state.extraStyle}>
 				<NavBar />
-				<Route exact path="/" component={Home} />
-				<Route exact path="/kalama-sin" component={CreateNewVoice} />
-				<Route exact path="/kalama/:id/:token/open" component={RecordingIntroduction} />
-				<Route exact path="/kalama/:id/:token/ante" component={RecordingModification} />
-				<Route exact path="/kalama/:id/:token/kute" component={RecordingPlayback} />
-				<Route exact path="/kalama/:id" component={RecordingPlayback} />
+				<Route exact path="/" component={props => <Home setExtraStyle={this.setExtraStyle} {...props}/>} />
+				<Route exact path="/kalama-sin" component={props => <CreateNewVoice setExtraStyle={this.setExtraStyle} {...props}/>} />
+				<Route exact path="/kalama/:id/:token/open" component={props => <RecordingIntroduction setExtraStyle={this.setExtraStyle} {...props}/>} />
+				<Route exact path="/kalama/:id/:token/ante" component={props => <RecordingModification setExtraStyle={this.setExtraStyle} {...props}/>} />
+				<Route exact path="/kalama/:id/:token/kute" component={props => <RecordingPlayback setExtraStyle={this.setExtraStyle} {...props}/>} />
+				<Route exact path="/kalama/:id" component={props => <RecordingPlayback setExtraStyle={this.setExtraStyle} {...props}/>} />
 			</div>
 		);
 	}
