@@ -57,7 +57,7 @@ class RecordingPlayback extends React.Component{
 		let that = this;
 		//Read public metadata
 		$.ajax(
-		`${config.dataEndPoint}/${this.getVoiceId()}/metadata.json`,
+		`${config.dataEndPoint}/${this.getVoiceId()}/metadata.json?${new Date().getTime()}`,
 		{
 			type : 'GET',
 			success : (data, textStatus, jqXHR) => {
