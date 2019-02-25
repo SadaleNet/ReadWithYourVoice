@@ -60,6 +60,13 @@ class Home extends React.Component{
 							</Button>
 						</Link>
 					</p>
+					<p>
+						<a href="https://youtu.be/oV5kHIu6AVc" target="_blank" rel="noopener noreferrer">
+							<Button variant="secondary">
+							<Translate id="home.usagedemovideo" />
+							</Button>
+						</a>
+					</p>
 					</Jumbotron>
 				</div>
 				<div class="d-flex mx-auto w-100 justify-content-center align-items-center">

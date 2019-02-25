@@ -8,20 +8,35 @@ This repository contains the front-end of this project. [The repo of the back-en
 
 Live demo is available here: [https://voice.sadale.net](https://voice.sadale.net)
 
+# Demonstration Video
+
+Couldn't figure out how to use the site? Check out this video! [https://youtu.be/oV5kHIu6AVc](https://youtu.be/oV5kHIu6AVc)
+
 # Creating New Voice
+
+## Theory
 
 The idea is simple. Toki Pona is a language that has less than 130 words. To make text-to-speech of arbitrary voice work, the user would just need to record 25 sentences that contains all of the words. After that, the server would split the audio clips of each sentence into audio clips containing individual words. Then the text-to-speech engine of the website would make use of the user-provided text to generate a speech by playing the existing audio clips of words in sequence.
 
 Please notice that additional syllables would be required to be recorded if the text contains non-standard words. This includes name of people, name of places and loan words.
 
+## Procedure
+
 To create a new voice, the following procedure can be performed:
 
-1. Get a headset or earphone. It's highly recommended. Otherwise the assistive melody and beat would get recorded along with the human voice.
-2. Use the "Start Recording" button on the website to create a new voice. Fill in the metadata there, including the pitch of stressed and unstressed syllables and the duration of each syllable.
-3. A link will be shown for future modification of the voice. Save the link for future modification.
-4. Start recording! After pressing the "Record" button, assistive melody and beat would be played. Sing along the melody and beat as if you're in karaoke. After that, press the "Play" button to test the voice and press "Next" to record the next sentence. Repeat until you're done. If you aren't interested in synthesizing non-official words, it isn't required to record the syllables.
-5. After you're done, switch to the text-to-speech page and you can test with the voice.
-6. There're two links shown on the page. One of the link is used for modification of voice. Do **not** share that link. Instead, share the one that's used for text-to-speech without modification privilege. After that, whoever having access to the link would be able to use the text-to-speech with your voice! :)
+1. Use the "Start Recording" button on the website to create a new voice. Fill in the metadata there, including the pitch of stressed and unstressed syllables and the duration of each syllable.
+2. A link will be shown for future modification of the voice. Save the link for future modification.
+3. Start recording! After pressing the "Record" button, assistive melody and beat would be played. Sing along the melody and beat as if you're in karaoke. After that, press the "Play" button to test the voice and press "Next" to record the next sentence. Repeat until you're done. If you aren't interested in synthesizing non-official words, it isn't required to record the syllables.
+4. After you're done, switch to the text-to-speech page and you can test with the voice.
+5. There're two links shown on the page. One of the link is used for modification of voice. Do **not** share that link. Instead, share the one that's used for text-to-speech without modification privilege. After that, whoever having access to the link would be able to use the text-to-speech with your voice! :)
+
+## Tips for Quality Recording
+
+* Get a headset or earphone. It's highly recommended. Otherwise the assistive melody and beat would get recorded along with the human voice.
+* When you're recording, do not do it as if you're talking. Do it as if you're singing in karaoke. Try following the pitch and timing of the assistive melody as close as possible. The pitch is especially important. If the timing is a bit off, it's often ok because the server would automatically trim out the silence of the audio.
+* Ensure that there's a clear separation when you're pronouncing each word. For example, if the webpage shows "o kepeken telo moli lon ma ali ni", you'd have to pronounce it as if it's "o. kepeken. telo. moli. lon. ma. ali. ni."
+	* The separation is used for the server to remove the silent part of the audio clip. Without the separation, there would not be any silence. As server-side silence removal is used for of adjusting the timing of the audio clips, no silence would cause timing adjustment to fail. This would make the timing of the audio clips sound off.
+* Some consonants take longer time to pronounce, including n and m. You may want to try reducing the transition time by try pronouncing these words with shorter n and m. Otherwise the word timing may go a bit off.
 
 # Technical Notes
 
