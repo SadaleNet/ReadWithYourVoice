@@ -46,7 +46,7 @@
 		"changename": ["Change", "o ante!"],
 		"stressed": ["Stressed", "kalama nanpa wan"],
 		"unstressed": ["Unstressed", "kalama nanpa wan ala"],
-		"duration": ["Syllable Duration", "tenpo kalama"],
+		"duration": ["Duration", "tenpo kalama"],
 		"separation": ["Word Separation: ", "tenpo awen: "],
 		"play": ["▶ Play", "▶ o kute!"],
 		"stopPlay": ["⏸ Stop", "⏸ o pini kute!"],
